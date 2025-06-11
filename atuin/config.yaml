@@ -1,0 +1,27 @@
+name: "Atuin Server"
+version: "0.2.0"
+slug: "atuin"
+description: "Atuin server with external PostgreSQL support"
+url: "https://github.com/atuinsh/atuin"
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+init: false
+panel: false
+host_network: false
+ports:
+  8888/tcp: 8888
+options:
+  db_host: postgres.local
+  db_port: 5432
+  db_user: atuin
+  db_password: your-strong-password
+  db_name: atuin
+schema:
+  db_host: str
+  db_port: int
+  db_user: str
+  db_password: str
+  db_name: str
