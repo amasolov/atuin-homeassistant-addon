@@ -17,7 +17,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH="/root/.cargo/bin:$PATH"
 
 # Clone and build Atuin
-RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git /Atuin
+RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git /atuin
 
 WORKDIR /atuin
 RUN cargo build --release --package atuin-server
