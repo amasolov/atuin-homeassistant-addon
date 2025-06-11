@@ -5,7 +5,7 @@ Run an Atuin server with external PostgreSQL support in Home Assistant.
 ## Installation
 
 1. Add this repository to Home Assistant:
-https://github.com/your-username/atuin-homeassistant-addon
+https://github.com/amasolov/atuin-homeassistant-addon
 
 2. Install the "Atuin Server" addon
 3. Configure your PostgreSQL connection details:
