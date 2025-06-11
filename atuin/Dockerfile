@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y \
     libpq-dev
 
 # Install Rust (via rustup)
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.86.0
 ENV PATH="/root/.cargo/bin:$PATH"
 
 # Clone and build Atuin
-RUN git clone --branch v18.1.0 https://github.com/atuinsh/atuin.git /atuin \
+RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git /atuin \
     && cd /atuin/server \
     && cargo build --release
 
