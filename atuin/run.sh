@@ -2,6 +2,9 @@
 
 set -eu
 
+export HOME="${HOME:-/opt/atuin}"
+
+
 command -v jq >/dev/null 2>&1 || { echo >&2 "jq is required but it's not installed. Aborting."; exit 1; }
 
 # Read from options.json
