@@ -1,12 +1,16 @@
-#!/usr/bin/env bashio
+#!/usr/bin/env bash
 
 set -eu
 
-DB_USER=$(bashio::config 'db_user')
-DB_PASSWORD=$(bashio::config 'db_password')
-DB_HOST=$(bashio::config 'db_host')
-DB_PORT=$(bashio::config 'db_port')
-DB_NAME=$(bashio::config 'db_name')
+command -v jq >/dev/null 2>&1 || { echo >&2 "jq is required but it's not installed. Aborting."; exit 1; }
+
+# Read from options.json
+DB_HOST=$(jq -r ".db_host" /data/options.json)
+DB_PORT=$(jq -r ".db_port" /data/options.json)
+DB_USER=$(jq -r ".db_user" /data/options.json)
+DB_PASSWORD=$(jq -r ".db_password" /data/options.json)
+DB_NAME=$(jq -r ".db_name" /data/options.json)
+
 
 
 export DATABASE_URL="postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
