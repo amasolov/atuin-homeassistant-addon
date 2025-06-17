@@ -1,6 +1,14 @@
 #!/bin/sh
 
 # Set database URL from configuration
+DB_USER="$(bashio::config 'db_user')"
+DB_PASSWORD="$(bashio::config 'db_password')"
+DB_HOST="$(bashio::config 'db_host')"
+DB_PORT="$(bashio::config 'db_port')"
+DB_NAME="$(bashio::config 'db_name')"
+
+
+
 export DATABASE_URL="postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 export ATUIN_OPEN_REGISTRATION=true
 
