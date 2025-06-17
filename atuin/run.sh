@@ -16,7 +16,7 @@ DB_NAME=$(jq -r ".db_name" /data/options.json)
 
 
 
-export DATABASE_URL="postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+export ATUIN_DB_URI="postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 export ATUIN_OPEN_REGISTRATION=true
 
 # Wait for PostgreSQL to be ready
