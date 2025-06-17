@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM AS builder
+FROM $BUILD_FROM AS buildstage
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -17,9 +17,11 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH="/root/.cargo/bin:$PATH"
 
 # Clone and build Atuin
-RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git /atuin
+WORKDIR /src
 
-WORKDIR /root/atuin
+RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git
+
+WORKDIR /src/atuin
 RUN cargo build --release --package atuin-server
 
 # Target image to run it
@@ -32,7 +34,7 @@ RUN apt-get update && apt-get install -y \
   netcat-traditional && \
   rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /root/atuin/target/release/atuin-server /usr/bin/atuin-server
+COPY --from=builder /src/atuin/target/release/atuin-server /usr/bin/atuin-server
 
 WORKDIR /opt/atuin
 
