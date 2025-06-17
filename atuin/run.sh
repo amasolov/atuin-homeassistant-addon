@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bashio
 
 # Set database URL from configuration
 DB_USER="$(bashio::config 'db_user')"
