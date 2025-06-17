@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
   netcat-traditional && \
   rm -rf /var/lib/apt/lists/*
 
-COPY --from=build /root/atuin/target/release/atuin-server /usr/bin/atuin-server
+COPY --from=builder /root/atuin/target/release/atuin-server /usr/bin/atuin-server
 
 WORKDIR /opt/atuin
 
