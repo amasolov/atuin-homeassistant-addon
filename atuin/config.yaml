@@ -1,5 +1,5 @@
 name: "Atuin Server"
-version: "0.2.5"
+version: "0.2.6"
 slug: "atuin"
 description: "Atuin server with external PostgreSQL support"
 url: "https://github.com/atuinsh/atuin"
