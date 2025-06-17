@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM AS buildstage
+FROM $BUILD_FROM
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -18,18 +18,10 @@ ENV PATH="/root/.cargo/bin:$PATH"
 
 # Clone and build Atuin
 WORKDIR /src
-
 RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git
 
 WORKDIR /src/atuin
-RUN cargo build --release --package atuin-server
-
-RUN ls -l /src/
-RUN ls -l /src/atuin/
-RUN ls -l /src/atuin/target/
-RUN ls -l /src/atuin/target/release/
-RUN ls -l /src/atuin/target/release/build
-
+RUN cargo build --release --package atuin
 
 # Target image to run it
 FROM $BUILD_FROM
@@ -41,7 +33,7 @@ RUN apt-get update && apt-get install -y \
   netcat-traditional && \
   rm -rf /var/lib/apt/lists/*
 
-COPY --from=buildstage /src/atuin/target/release/atuin-server /usr/bin/atuin-server
+COPY --from=buildstage /src/atuin/target/release/atuin /usr/bin/atuin
 
 WORKDIR /opt/atuin
 
