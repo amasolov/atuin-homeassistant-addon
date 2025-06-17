@@ -28,7 +28,7 @@ RUN ls -l /src/
 RUN ls -l /src/atuin/
 RUN ls -l /src/atuin/target/
 RUN ls -l /src/atuin/target/release/
-RUN ls -l /src/atuin/target/release/atuin-server
+RUN ls -l /src/atuin/target/release/build
 
 
 # Target image to run it
