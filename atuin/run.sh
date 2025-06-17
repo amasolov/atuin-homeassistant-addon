@@ -15,5 +15,5 @@ echo "Running database migrations..."
 
 # Start server
 echo "Starting Atuin server..."
-exec ./atuin-server start --host 0.0.0.0 --port 8888
+exec atuin-server start --host 0.0.0.0 --port 8888
 
