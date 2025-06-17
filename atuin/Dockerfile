@@ -19,7 +19,7 @@ ENV PATH="/root/.cargo/bin:$PATH"
 # Clone and build Atuin
 RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git /atuin
 
-WORKDIR /atuin
+WORKDIR /root/atuin
 RUN cargo build --release --package atuin-server
 
 # Target image to run it
