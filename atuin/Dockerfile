@@ -24,6 +24,13 @@ RUN git clone --branch v18.6.1 https://github.com/atuinsh/atuin.git
 WORKDIR /src/atuin
 RUN cargo build --release --package atuin-server
 
+RUN ls -l /src/
+RUN ls -l /src/atuin/
+RUN ls -l /src/atuin/target/
+RUN ls -l /src/atuin/target/release/
+RUN ls -l /src/atuin/target/release/atuin-server
+
+
 # Target image to run it
 FROM $BUILD_FROM
 
